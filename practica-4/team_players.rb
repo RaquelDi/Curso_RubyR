@@ -5,6 +5,8 @@ class Player
     @name = name
     @skill_level = skill_level
     @age = age
+
+
    end  
 
   def to_s
@@ -16,12 +18,12 @@ end
 class Team
   include Enumerable 
   attr_accessor :name
-  
+   @@team = 0
 
   def initialize (name)
     @name = name
     @players = []
-
+    @@team += 1
 
   end  
 
@@ -33,7 +35,10 @@ class Team
   def each
     @players.each { |player| yield player }
   end
+  def self.teams_quantity 
+    @@team
 
+  end
    
 
   def to_s
@@ -57,3 +62,4 @@ puts elig_players
 # DEBE IMPRIMIR
 # => <Jim: 4.5(SL), 15(AGE)>
 # => <Joe: 5(SL), 14(AGE)>
+puts Team.teams_quantity
